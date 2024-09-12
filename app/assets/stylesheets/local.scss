@@ -1,0 +1,12 @@
+$pink-red: var(--bs-pink);
+
+.field_with_errors {
+	.form-control {
+		border: 1px solid $pink-red;
+		border-radius: 5px;
+	}
+
+	label {
+		color: $pink-red;
+	}
+}
