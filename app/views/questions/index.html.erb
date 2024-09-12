@@ -6,4 +6,8 @@
   <time datetime="<%= question.formatted_date %>"><%= question.formatted_date %></time>
 
   <p><%= question.body %></p>
+  <br/>
+  <%= link_to 'Show', question_path(question) %> | 
+  <%= link_to 'Edit', edit_question_path(question) %> | 
+  <%= link_to 'Destroy', question_path(question), data: {turbo_method: :delete} %>
 <% end %>
