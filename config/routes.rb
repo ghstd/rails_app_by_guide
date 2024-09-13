@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   # get '/questions/:id/edit', to: 'questions#edit'
 
   resources :questions do
-    resources :answers, only: [:create, :destroy]
+    resources :answers, except: [:new, :show]
   end
 end
