@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   # post '/questions', to: 'questions#create'
   # get '/questions/:id/edit', to: 'questions#edit'
 
-  resources :questions
+  resources :questions do
+    resources :answers, only: [:create, :destroy]
+  end
 end
