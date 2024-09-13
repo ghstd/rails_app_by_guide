@@ -1,0 +1,13 @@
+<article class="mb-3" id="answer-<%= answer.id %>">
+  <small>
+    <time datetime="<%= answer.formatted_date %>">
+      <%= answer.formatted_date %>
+    </time>
+  </small>
+
+  <div><%= sanitize(answer.body) %></div>
+
+  <%= link_to 'Edit', edit_question_answer_path(question, answer), class: 'btn btn-info' %>
+  <%= link_to 'Delete', question_answer_path(question, answer), class: 'btn btn-danger', data: {turbo_method: :delete} %>
+
+</article>

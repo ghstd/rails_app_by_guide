@@ -11,8 +11,6 @@ module ApplicationHelper
   end
 
   def currently_at(current_page = '')
-    p '!!!!!!!!!!!!!!!!!!!!!!!!'
-    p current_page
     render partial: 'shared/menu', locals: {current_page: current_page}
   end
 

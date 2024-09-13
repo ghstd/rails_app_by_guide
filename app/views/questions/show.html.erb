@@ -1,14 +1,15 @@
+<% currently_at 'Questions' %>
+
 <h1 class="mb-4"><%= @question.title %></h1>
 
 <time datetime="<%= @question.formatted_date %>">
   <%= @question.formatted_date %>
 </time>
 
-<p class="lead my-3">
-  <%= @question.body %>
-</p>
+<div class="lead my-3">
+  <%= sanitize(@question.body) %>
+</div>
 
-<%= link_to 'Show', question_path(@question), class: 'btn btn-primary' %>
 <%= link_to 'Edit', edit_question_path(@question), class: 'btn btn-secondary' %>
 <%= link_to 'Destroy', question_path(@question), class: 'btn btn-danger', data: {turbo_method: :delete} %>
 
@@ -20,18 +21,11 @@
 
 <h2>Answers</h2>
 
-<% @answers.each do |answer| %>
-  <article class="mb-3">
-    <small>
-      <time datetime="<%= answer.formatted_date %>">
-        <%= answer.formatted_date %>
-      </time>
-    </small>
+<%= paginate @answers %>
 
-    <p><%= answer.body %></p>
+<%= render partial: 'answers/answer', 
+		collection: @answers, 
+		as: :answer, 
+		locals: {question: @question} %>
 
-    <%= link_to 'Edit', edit_question_answer_path(@question, answer), class: 'btn btn-info' %> |
-    <%= link_to 'Delete', question_answer_path(@question, answer), class: 'btn btn-danger', data: {turbo_method: :delete} %>
-
-  </article>
-<% end %>
+<%= paginate @answers %>
