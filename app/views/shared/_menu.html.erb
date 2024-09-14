@@ -25,7 +25,7 @@
 
         <ul class="nav col-12 col-lg-auto mb-2 mb-md-0">
           <% if user_signed_in? %>
-            <li class="text-white"><%= current_user.name %></li>
+            <li class="text-white"><%= current_user.name_or_email %></li>
           <% else %>
             <li>
               <%= nav_tab(

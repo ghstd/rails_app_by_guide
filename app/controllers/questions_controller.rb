@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
 
   def index
     @pagy, @questions = pagy(Question.order(created_at: :desc), limit: 5)
+    @questions = @questions.decorate
   end
 
   def new
@@ -20,8 +21,10 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @question = @question.decorate
     @answer = @question.answers.build
-    @pagy, @answers = pagy(@question.answers.order(created_at: :desc), limit: 5)
+    @pagy, @answers = pagy(@question.answers.order(created_at: :desc), limit: 3)
+    @answers = @answers.decorate
   end
 
   def edit

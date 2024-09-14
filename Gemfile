@@ -49,6 +49,7 @@ gem "bootsnap", require: false
 
 # '=============================================='
 gem 'pagy', '~> 9.0'
+gem "draper", "~> 4.0"
 # '=============================================='
 
 group :development, :test do
