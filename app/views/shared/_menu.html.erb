@@ -22,6 +22,22 @@
 						}) %>
           </li>
         </ul>
+
+        <ul class="nav col-12 col-lg-auto mb-2 mb-md-0">
+          <% if user_signed_in? %>
+            <li class="text-white"><%= current_user.name %></li>
+          <% else %>
+            <li>
+              <%= nav_tab(
+							title: 'Sign Up',
+							url: new_user_path,
+							options: {
+							class: 'nav-link px-2',
+							current_page: current_page
+						}) %>
+            </li>
+          <% end %>
+        </ul>
       </nav>
     </div>
   </header>
