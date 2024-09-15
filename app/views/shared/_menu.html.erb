@@ -25,7 +25,23 @@
 
         <ul class="nav col-12 col-lg-auto mb-2 mb-md-0">
           <% if user_signed_in? %>
-            <li class="text-white"><%= current_user.name_or_email %></li>
+            <li class="dropdown">
+              <%= nav_tab(
+							title: current_user.name_or_email,
+							url: '#',
+							options: {
+							class: 'nav-link px-2 text-white dropdown-toggle',
+							data: {"bs-toggle": "dropdown"},
+							current_page: current_page
+							}) %>
+
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to 'Log Out', session_path,
+										class: 'dropdown-item', data: {turbo_method: :delete} %>
+                </li>
+              </ul>
+            </li>
           <% else %>
             <li>
               <%= nav_tab(
@@ -34,7 +50,17 @@
 							options: {
 							class: 'nav-link px-2',
 							current_page: current_page
-						}) %>
+							}) %>
+            </li>
+
+            <li>
+              <%= nav_tab(
+							title: 'Log In',
+							url: new_session_path,
+							options: {
+							class: 'nav-link px-2',
+							current_page: current_page
+							}) %>
             </li>
           <% end %>
         </ul>
