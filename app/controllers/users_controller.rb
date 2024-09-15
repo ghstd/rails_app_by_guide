@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in(@user)
+      remember(@user) if params[:remember_me] == "1"
       flash[:success] = "User created! Hi, #{@user.decorate.name_or_email}!"
       redirect_to root_path
     else
