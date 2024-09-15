@@ -50,6 +50,7 @@ gem "bootsnap", require: false
 # '=============================================='
 gem 'pagy', '~> 9.0'
 gem "draper", "~> 4.0"
+gem 'valid_email2', '~> 5.3'
 # '=============================================='
 
 group :development, :test do
