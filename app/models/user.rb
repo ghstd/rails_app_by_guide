@@ -3,11 +3,11 @@
 class User < ApplicationRecord
   attr_accessor :old_password, :remember_token
 
-  has_secure_password validates: false
+  has_secure_password validations: false
 
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
-  validates :password_presence
-  validates :correct_old_password, on: :update, if: -> { password.present? }
+  validates :password_presence, presence: true
+  validates :correct_old_password, presence: true, on: :update, if: -> { password.present? }
   validates :password, confirmation: true, allow_blank: true
   # validates :password_complexity
 
@@ -62,5 +62,3 @@ class User < ApplicationRecord
     errors.add(:password, :blank) if password_digest.blank?
   end
 end
-
-# t('.form.remember_me'),
