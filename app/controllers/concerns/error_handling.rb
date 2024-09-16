@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ErrorHandling
   extend ActiveSupport::Concern
 
@@ -6,8 +8,8 @@ module ErrorHandling
 
     private
 
-    def not_found(e)
-      logger.warn(e)
+    def not_found(err)
+      logger.warn(err)
       render file: 'public/404.html', status: :not_found, layout: false
     end
   end
