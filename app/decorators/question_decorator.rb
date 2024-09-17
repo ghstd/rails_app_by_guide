@@ -4,6 +4,6 @@ class QuestionDecorator < Draper::Decorator
   delegate_all
 
   def formatted_date
-    created_at.strftime('%Y-%m-%d %H:%M:%S')
+    l(created_at.strftime, format: :long)
   end
 end

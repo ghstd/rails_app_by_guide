@@ -1,0 +1,22 @@
+ru:
+  en: 'Английсикй'
+  ru: 'Рус'
+  activerecord:
+    models:
+      question: 'Вопрос'
+    attributes:
+      question:
+        title: 'Заголовок'
+        body: 'Текст'
+  menu:
+    home: 'Главная'
+    questions: 'Вопросы'
+  questions:
+    index:
+      title: 'Вопросы'
+    create:
+      success: 'Вопрос создан'
+    update:
+      success: 'Вопрос обновлен'
+    destroy:
+      success: 'Вопрос удален'

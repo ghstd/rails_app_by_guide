@@ -28,4 +28,25 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  en: 'English'
+  ru: 'Rus'
+  activerecord:
+    models:
+      question: 'Question'
+    attributes:
+      question:
+        title: 'Title'
+        body: 'Body'
+  menu:
+    home: 'Home'
+    questions: 'Questions'
+  questions:
+    index:
+      title: 'Questions'
+    create:
+      success: 'Question created'
+    update:
+      success: 'Question updated'
+    destroy:
+      success: 'Question destroyed'
+
