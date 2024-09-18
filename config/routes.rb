@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  namespace :api do
+    resources :tags, only: :index
+  end
+
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
     root 'questions#index'
 
@@ -19,7 +23,7 @@ Rails.application.routes.draw do
     end
 
     namespace :admin do
-      resources :users, only: %i[index]
+      resources :users, only: %i[index edit update destroy]
     end
   end
 end

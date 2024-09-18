@@ -4,7 +4,8 @@
 <h1 class="mb-4"><%= t '.title' %></h1>
 
 <div class="btn-group mb-3">
-  <%= link_to t('.download_zipped'), admin_users_path(format: :zip), class: 'btn btn-secondary' %>
+  <%= link_to t('.download_zipped'), admin_users_path(format: :zip),
+    class: 'btn btn-secondary' %>
 </div>
 
 <%= pagination @pagy %>
@@ -16,6 +17,7 @@
       <th scope="col">#</th>
       <th scope="col"><%= t 'name', scope: scope %></th>
       <th scope="col"><%= t 'email', scope: scope %></th>
+      <th scope="col"><%= t 'role', scope: scope %></th>
       <th scope="col"><%= t 'created_at', scope: scope %></th>
       <th scope="col"></th>
     </tr>
@@ -26,3 +28,19 @@
 </table>
 
 <%= pagination @pagy %>
+
+<h2 class="mb-3"><%= t '.upload_zipped' %></h2>
+
+<%= form_with url: admin_users_path do |f| %>
+  <div class="mb-3 row">
+    <div class="col-sm-2 col-form-label">
+      <%= f.label :archive, t('.upload_form.archive') %>
+    </div>
+
+    <div class="col-sm-10">
+      <%= f.file_field :archive, class: 'form-control' %>
+    </div>
+  </div>
+
+  <%= f.submit t('.upload_form.submit'), class: 'btn btn-primary' %>
+<% end %>
