@@ -72,6 +72,7 @@ group :development do
   # gem "spring"
 
   # '=============================================='
+  gem 'bullet'
   gem 'faker', '~> 3.4.2'
   gem 'pry-rails'
   gem 'rubocop', '~> 1.66', require: false

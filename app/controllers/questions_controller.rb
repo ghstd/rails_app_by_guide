@@ -1,18 +1,17 @@
 # frozen_string_literal: true
 
 class QuestionsController < ApplicationController
+  include QuestionsAnswers
+
   before_action :set_question!, only: %i[show edit update destroy]
 
   def index
-    @pagy, @questions = pagy(Question.order(created_at: :desc), limit: 5)
+    @pagy, @questions = pagy(Question.includes(:user).order(created_at: :desc), limit: 5)
     @questions = @questions.decorate
   end
 
   def show
-    @question = @question.decorate
-    @answer = @question.answers.build
-    @pagy, @answers = pagy(@question.answers.order(created_at: :desc), limit: 3)
-    @answers = @answers.decorate
+    load_questions_answers
   end
 
   def new
@@ -22,7 +21,7 @@ class QuestionsController < ApplicationController
   def edit; end
 
   def create
-    @question = Question.new(question_params)
+    @question = current_user.questions.build(question_params)
     if @question.save
       flash[:success] = t('.success')
       redirect_to questions_path

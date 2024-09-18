@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:email])
     if user&.authenticate(params[:password])
-      do_sign_id(user)
+      do_sign_in(user)
     else
       flash.now[:warning] = 'Wrong email or password'
       render :new
@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
 
   private
 
-  def do_sign_id(user)
+  def do_sign_in(user)
     sign_in(user)
     flash[:success] = "User Log in! Hi, #{user.decorate.name_or_email}!"
     redirect_to root_path
