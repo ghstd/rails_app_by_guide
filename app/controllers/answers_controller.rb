@@ -5,6 +5,10 @@ class AnswersController < ApplicationController
 
   before_action :set_question!
   before_action :set_answer!, except: :create
+  before_action :authorize_question!
+  after_action :verify_authorized
+
+
   def edit; end
 
   def create
@@ -49,5 +53,9 @@ class AnswersController < ApplicationController
 
   def answer_params_update
     params.require(:answer).permit(:body)
+  end
+
+  def authorize_question!
+    authorize(@question || Question)
   end
 end

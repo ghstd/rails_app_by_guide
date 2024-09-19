@@ -2,38 +2,25 @@
 
 class QuestionsController < ApplicationController
   include QuestionsAnswers
-
-  before_action :set_question!, only: %i[show edit update destroy]
-  before_action :fetch_tags, only: %i[new edit]
-
-  def index
-    @pagy, @questions = pagy(Question.includes(:user, :question_tags, :tags).order(created_at: :desc), limit: 5)
-    @questions = @questions.decorate
-    @tags = Tag.all
-  end
+  before_action :require_authentication, except: %i[show index]
+  before_action :set_question!, only: %i[show destroy edit update]
+  before_action :authorize_question!
+  after_action :verify_authorized
 
   def show
-    load_questions_answers
+    load_question_answers
   end
 
-  def new
-    @question = Question.new
+  def destroy
+    @question.destroy
+    flash[:success] = t('.success')
+    redirect_to questions_path
   end
 
   def edit; end
 
-  def create
-    @question = current_user.questions.build(question_params)
-    if @question.save
-      flash[:success] = t('.success')
-      redirect_to questions_path
-    else
-      render :new
-    end
-  end
-
   def update
-    if @question.update(question_params)
+    if @question.update question_params
       flash[:success] = t('.success')
       redirect_to questions_path
     else
@@ -41,10 +28,24 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def destroy
-    @question.destroy
-    flash[:success] = t('.success')
-    redirect_to questions_path
+  def index
+    @tags = Tag.where(id: params[:tag_ids]) if params[:tag_ids]
+    @pagy, @questions = pagy Question.all_by_tags(@tags)
+    @questions = @questions.decorate
+  end
+
+  def new
+    @question = Question.new
+  end
+
+  def create
+    @question = current_user.questions.build question_params
+    if @question.save
+      flash[:success] = t('.success')
+      redirect_to questions_path
+    else
+      render :new
+    end
   end
 
   private
@@ -54,10 +55,10 @@ class QuestionsController < ApplicationController
   end
 
   def set_question!
-    @question = Question.find(params[:id])
+    @question = Question.find params[:id]
   end
 
-  def fetch_tags
-    @tags = Tag.all
+  def authorize_question!
+    authorize(@question || Question)
   end
 end

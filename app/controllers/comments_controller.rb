@@ -5,6 +5,8 @@ class CommentsController < ApplicationController
 
   before_action :set_commentable!
   before_action :set_question
+  before_action :authorize_question!
+  after_action :verify_authorized
 
   def create
     @comment = @commentable.comments.build comment_params
@@ -40,5 +42,9 @@ class CommentsController < ApplicationController
 
   def set_question
     @question = @commentable.is_a?(Question) ? @commentable : @commentable.question
+  end
+
+  def authorize_question!
+    authorize(@question || Question)
   end
 end

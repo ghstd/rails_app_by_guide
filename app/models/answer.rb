@@ -2,6 +2,7 @@
 
 class Answer < ApplicationRecord
   include Comentable
+  include Authorship
 
   belongs_to :question
   belongs_to :user

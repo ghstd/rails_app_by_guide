@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_action :require_no_auth, only: %i[new create]
   before_action :require_auth, only: %i[edit update]
   before_action :set_user!, only: %i[edit update]
+  before_action :authorize_question!
+  after_action :verify_authorized
 
   def new
     @user = User.new
@@ -40,5 +42,9 @@ class UsersController < ApplicationController
 
   def set_user!
     @user = User.find(params[:id])
+  end
+
+  def authorize_question!
+    authorize(@question || Question)
   end
 end

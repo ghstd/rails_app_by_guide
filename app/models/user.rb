@@ -17,6 +17,14 @@ class User < ApplicationRecord
   validates :role, presence: true
   # validates :password_complexity
 
+  def guest?
+    false
+  end
+
+  def author?(obj)
+    obj.user == self
+  end
+
   def remember_me
     self.remember_token = SecureRandom.urlsafe_base64
     # rubocop:disable Rails/SkipsModelValidations
