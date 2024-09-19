@@ -52,9 +52,9 @@ gem 'bootsnap', require: false
 # '=============================================='
 gem 'draper', '~> 4.0'
 gem 'pagy', '~> 9.0'
+gem 'pundit', '~> 2.4'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'valid_email2', '~> 5.3'
-gem "pundit", "~> 2.4"
 # '=============================================='
 
 group :development, :test do
@@ -75,6 +75,7 @@ group :development do
   # '=============================================='
   gem 'bullet'
   gem 'faker', '~> 3.4.2'
+  gem 'letter_opener'
   gem 'pry-rails'
   gem 'rubocop', '~> 1.66', require: false
   gem 'rubocop-performance', '~> 1.22', require: false
