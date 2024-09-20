@@ -1,5 +1,15 @@
 # frozen_string_literal: true
 
+require 'sidekiq/web'
+
+class AdminConstraint
+  def matches?(request)
+    user_id = request.session[:user_id] || request.cookie_jar.encrypted[:user_id]
+
+    User.find_by(id: user_id)&.admin_role?
+  end
+end
+
 Rails.application.routes.draw do
   namespace :api do
     resources :tags, only: :index
@@ -7,6 +17,8 @@ Rails.application.routes.draw do
 
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
     root 'questions#index'
+
+    mount Sidekiq::Web => '/sidekiq', constraints: AdminConstraint.new
 
     resource :session, only: %i[new create destroy]
 
