@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       flash[:success] = "User created! Hi, #{@user.decorate.name_or_email}!"
       redirect_to root_path
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       flash[:success] = 'User updated'
       redirect_to edit_user_path(@user)
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

@@ -17,6 +17,8 @@ module Admin
       end
     end
 
+    def edit; end
+
     def create
       if params[:archive].present?
         UserBulkService.call params[:archive]
@@ -26,14 +28,12 @@ module Admin
       redirect_to admin_users_path
     end
 
-    def edit; end
-
     def update
       if @user.update user_params
         flash[:success] = t '.success'
         redirect_to admin_users_path
       else
-        render :edit
+        render :edit, status: :unprocessable_entity
       end
     end
 
@@ -50,7 +50,7 @@ module Admin
         User.order(created_at: :desc).each do |user|
           zos.put_next_entry "user_#{user.id}.xlsx"
           zos.print render_to_string(
-            layout: false, handlers: [:axlsx], formats: [:xlsx], template: 'admin/users/user', locals: { user: user }
+            layout: false, handlers: [:axlsx], formats: [:xlsx], template: 'admin/users/user', locals: { user: }
           )
         end
       end

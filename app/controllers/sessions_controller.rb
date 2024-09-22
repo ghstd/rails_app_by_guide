@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       do_sign_in(user)
     else
       flash.now[:warning] = 'Wrong email or password'
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
