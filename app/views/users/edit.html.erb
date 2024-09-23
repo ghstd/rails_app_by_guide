@@ -1,6 +1,6 @@
-<% provide :title, 'Edit User' %>
-<% currently_at 'Edit User' %>
+<% provide :page_title, t('.title') %>
+<% currently_at t('menu.edit_profile') %>
 
-<h1>Edit User</h1>
+<h1 class="mb-4"><%= t('.title') %></h1>
 
-<%= render 'form' %>
+<%= render 'form', user: @user %>

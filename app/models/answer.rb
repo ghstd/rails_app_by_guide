@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Answer < ApplicationRecord
-  include Comentable
+  include Commentable
   include Authorship
 
   belongs_to :question

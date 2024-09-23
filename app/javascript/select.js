@@ -1,5 +1,5 @@
 import TomSelect from 'tom-select/dist/js/tom-select.popular'
-import Translations from './i18n/select.json'
+import Translations from './i18n_select.json'
 
 let selects = []
 

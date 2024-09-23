@@ -25,11 +25,11 @@ ru:
   admin:
     user_mailer:
       bulk_import_done:
-        subject: Импорт пользователей завершён | AskIt
+        subject: Импорт пользователей завершён | Rails_App_by_Guide
       bulk_import_fail:
-        subject: Импорт пользователей не удался | AskIt
+        subject: Импорт пользователей не удался | Rails_App_by_Guide
       bulk_export_done:
-        subject: Экспорт пользователей завершён | AskIt
+        subject: Экспорт пользователей завершён | Rails_App_by_Guide
     users:
       edit:
         title: Редактирование пользователя
@@ -109,7 +109,7 @@ ru:
     users: Пользователи
   pages:
     index:
-      title: Добро пожаловать в AskIt!
+      title: Добро пожаловать в Rails_App_by_Guide!
   questions:
     create:
       success: Вопрос создан!
@@ -132,7 +132,7 @@ ru:
   ru: Русский
   password_reset_mailer:
     reset_email:
-      subject: 'Сброс пароля | AskIt'
+      subject: 'Сброс пароля | Rails_App_by_Guide'
   sessions:
     create:
       invalid_creds: Неверный email и/или пароль!

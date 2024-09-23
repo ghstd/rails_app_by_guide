@@ -54,11 +54,11 @@ en:
   admin:
     user_mailer:
       bulk_import_done:
-        subject: User import done | AskIt
+        subject: User import done | Rails_App_by_Guide
       bulk_import_fail:
-        subject: User import failed | AskIt
+        subject: User import failed | Rails_App_by_Guide
       bulk_export_done:
-        subject: User export done | AskIt
+        subject: User export done | Rails_App_by_Guide
     users:
       edit:
         title: Edit user
@@ -122,7 +122,7 @@ en:
     users: Users
   pages:
     index:
-      title: Welcome to AskIt!
+      title: Welcome to Rails_App_by_Guide!
   questions:
     create:
       success: Question created!
@@ -145,7 +145,7 @@ en:
   ru: Russian
   password_reset_mailer:
     reset_email:
-      subject: 'Password reset | AskIt'
+      subject: 'Password reset | Rails_App_by_Guide'
   password_resets:
     fail: Could not reset your password...
     edit:

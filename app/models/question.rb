@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Question < ApplicationRecord
-  include Comentable
   include Authorship
+  include Commentable
 
   has_many :answers, dependent: :destroy
   belongs_to :user
