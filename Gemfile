@@ -55,6 +55,7 @@ gem 'pagy', '~> 9.0'
 gem 'pundit', '~> 2.4'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'sidekiq', '~> 7.3'
+gem 'sidekiq-scheduler', '~> 5.0'
 gem 'valid_email2', '~> 5.3'
 # '=============================================='
 
