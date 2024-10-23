@@ -28,6 +28,9 @@
 /tmp/storage/*
 !/tmp/storage/
 !/tmp/storage/.keep
+# =============
+!/storage/production.sqlite3
+# =============
 
 /public/assets
 

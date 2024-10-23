@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :answers, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
-  validates :password_presence, presence: true
+  validates :password, presence: true
   validates :correct_old_password, presence: true, on: :update, if: -> { password.present? && !admin_edit }
   validates :password, confirmation: true, allow_blank: true
   validates :role, presence: true

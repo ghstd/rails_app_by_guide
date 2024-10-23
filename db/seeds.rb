@@ -11,12 +11,12 @@
 #   end
 
 # 10.times do
-#   title = Faker::Hipster.sentence(word_count: 4)
+#   title = Faker::Hipster.sentence(word_count: 3)
 #   body = Faker::Lorem.paragraph(sentence_count: 5, supplemental: true, random_sentences_to_add: 4)
-#   Question.create(title:, body:)
+#   Question.create(title:, body:, user_id: User.last.id)
 # end
 
-30.times do
-  title = Faker::Hipster.word
-  Tag.create(title:)
-end
+# 30.times do
+#   title = Faker::Hipster.word
+#   Tag.create(title:)
+# end
